@@ -21,15 +21,12 @@ public class Motor
     {
         _motor.setPower(0);
     }
-    public void MotorSpeed (double speed)
-    {
-        _motor.setPower(speed);
-    }
+    
 
     public void MoveForward(double power)
     {
         _motor.setDirection(_direction);
-        if(power > 0 && power <= 100)
+        if(power >=-100 && power <= 100)
             _motor.setPower(power);
         else
             Logger.getInstance().WriteMessage("Invalid Power passed to Motor::MoveForward()");

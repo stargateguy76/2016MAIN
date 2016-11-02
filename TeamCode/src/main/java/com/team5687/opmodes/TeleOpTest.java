@@ -1,39 +1,42 @@
 package com.team5687.opmodes;
 
-import android.graphics.Path;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.UltrasonicSensor;
-import com.team5687.Constants;
-import com.team5687.helpers.Logger;
-import com.team5687.primitives.Motor;
-import com.team5687.controllers.DriveController;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.team5687.controllers.JoystickController;
-
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.team5687.helpers.Logger;
 
 /**
  * Created by RedDragon on 10/25/2016.
  */
 
+
+
+@TeleOp(name = "TeleOptest", group = "Test")
 public class TeleOpTest extends OpMode {
 
-    DriveController _drive = new DriveController();
-    JoystickController _Joy = new JoystickController();
+    public float Power1 =100;
+    JoystickController _joy = new JoystickController();
+
+
     @Override
     public void init() {
         telemetry.addLine("Init()");
         Logger.getInstance().SetTelemetry(telemetry);
         Logger.getInstance().WriteMessage("TeleOpTest::Init()");
-        _drive = new DriveController();
-         _Joy = new JoystickController();
-        _drive.Init(hardwareMap);
+        _joy = new JoystickController();
+        _joy.Init(hardwareMap);
     }
 
     @Override
     public void loop() {
-        _Joy.loop();
+
+        telemetry.addData("leftstick", gamepad1.left_stick_y);
+        telemetry.addData("rightstick", gamepad1.right_stick_y);
+        _joy._rightMotor.setPower(gamepad1.left_stick_y);
+        _joy._leftMotor.setPower(gamepad1.right_stick_y);
+
+
+
+
     }
 }

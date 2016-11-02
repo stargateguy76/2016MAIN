@@ -16,13 +16,21 @@ public class Logger {
     }
 
     private Telemetry _telemetry;
+    private float _power1;
+    private Float _powerex;
+
 
     public void SetTelemetry(Telemetry tele) {
         _telemetry = tele;
+
+
     }
+
+
 
     public void WriteMessage(String message) {
         _telemetry.addLine(message);
         _telemetry.update();
+
     }
 }

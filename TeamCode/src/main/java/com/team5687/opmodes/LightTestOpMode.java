@@ -4,7 +4,6 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.LightSensor;
 import com.team5687.Constants;
-import com.team5687.controllers.DriveController;
 import com.team5687.helpers.Logger;
 
 /**
@@ -13,11 +12,12 @@ import com.team5687.helpers.Logger;
 
 @Autonomous(name = "Test Light Sensor", group = "Test")
 public class LightTestOpMode extends OpMode {
-    LightSensor lightSensor;  // Hardware Device Object
+    LightSensor lightSensor;// Hardware Device Object
     @Override
     public void init() {
         Logger.getInstance().SetTelemetry(telemetry);
         lightSensor = hardwareMap.get(LightSensor.class, Constants.LIGHT_SENSOR);
+
     }
 
     @Override

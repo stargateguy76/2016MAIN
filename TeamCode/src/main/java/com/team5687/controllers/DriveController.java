@@ -1,6 +1,5 @@
 package com.team5687.controllers;
 
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.UltrasonicSensor;
@@ -76,6 +75,7 @@ public class DriveController {
             if(distance < 100.0) {
                 _leftMotor.MoveBackward(100);
                 _rightMotor.MoveBackward(100);
+
             }
             else
                 _state = State.MovingForward;
